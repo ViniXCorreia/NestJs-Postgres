@@ -15,4 +15,10 @@ export class User {
     @Column()
     age: number;
 
+    @Column()
+    role: number;
+
+    @Column()
+    password: string;
+
 }
