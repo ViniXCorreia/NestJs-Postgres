@@ -4,17 +4,17 @@
    "port": 5432,
    "username": "postgres",
    "password": "123456",
-   "database": "studydb",
+   "database": "studyViniDb",
    "synchronize": true,
    "logging": false,
    "entities": [
-      "src/entity/**/*.ts"
+      "src/login/entity/*.entity.{js,ts}"
    ],
    "migrations": [
-      "src/migration/**/*.ts"
+      "src/migration/**/*.{js,ts}"
    ],
    "subscribers": [
-      "src/subscriber/**/*.ts"
+      "src/subscriber/**/*.{js,ts}"
    ],
    "cli": {
       "entitiesDir": "src/entity",

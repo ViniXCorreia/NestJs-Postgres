@@ -16,7 +16,7 @@ export class User {
     age: number;
 
     @Column()
-    role: number;
+    role: string;
 
     @Column()
     password: string;
