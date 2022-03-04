@@ -1,18 +1,16 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
-import { userDTO } from './dto/userLogin.dto';
-import { LoginService } from './login.service';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { User } from './entity/user.entity';
+import { UserService } from './user.service';
+
 
 @Controller('study')
-export class LoginController {
+export class UserController {
     constructor(
-        private readonly loginService:LoginService
+        private readonly userService: UserService
     ){}
-
-    @Post('login')
-    async loginUser(@Body() param:userDTO){
-        return '';
-    }
-
+    
     @Post('create')
     async createUser(@Body() name: string, cpf: string){
         return '';
