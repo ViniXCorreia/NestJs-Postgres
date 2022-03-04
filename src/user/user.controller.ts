@@ -1,7 +1,5 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { User } from './entity/user.entity';
+import { userDTO } from '../login/dto/userLogin.dto';
 import { UserService } from './user.service';
 
 
@@ -10,9 +8,9 @@ export class UserController {
     constructor(
         private readonly userService: UserService
     ){}
-    
+
     @Post('create')
-    async createUser(@Body() name: string, cpf: string){
+    async createUser(@Body() params: userDTO, ){
         return '';
     }
 

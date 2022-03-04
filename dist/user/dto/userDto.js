@@ -14,15 +14,34 @@ const class_validator_1 = require("class-validator");
 class userDTO {
 }
 __decorate([
+    (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)(),
-    (0, class_validator_1.Min)(11),
-    (0, class_validator_1.Max)(11),
+    __metadata("design:type", String)
+], userDTO.prototype, "firstname", void 0);
+__decorate([
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsNotEmpty)(),
+    __metadata("design:type", String)
+], userDTO.prototype, "lastName", void 0);
+__decorate([
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], userDTO.prototype, "cpf", void 0);
 __decorate([
+    (0, class_validator_1.IsNumber)(),
     (0, class_validator_1.IsNotEmpty)(),
+    __metadata("design:type", Number)
+], userDTO.prototype, "age", void 0);
+__decorate([
     (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsNotEmpty)(),
+    __metadata("design:type", String)
+], userDTO.prototype, "role", void 0);
+__decorate([
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], userDTO.prototype, "password", void 0);
 exports.userDTO = userDTO;
-//# sourceMappingURL=userLogin.dto.js.map
+//# sourceMappingURL=userDto.js.map

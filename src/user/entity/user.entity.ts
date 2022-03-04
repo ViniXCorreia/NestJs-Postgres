@@ -10,6 +10,9 @@ export class User {
     firstName: string;
 
     @Column()
+    cpf: string
+
+    @Column()
     lastName: string;
 
     @Column()

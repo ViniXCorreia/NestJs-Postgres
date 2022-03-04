@@ -8,5 +8,6 @@ export class userDTO{
     cpf: string;
 
     @IsNotEmpty()
+    @IsString()
     password: string;
 }
