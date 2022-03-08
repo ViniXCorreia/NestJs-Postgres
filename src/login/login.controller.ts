@@ -1,12 +1,15 @@
 import { Body, Controller, Post } from '@nestjs/common';
-import { userDTO } from './dto/userLogin.dto';
+import { userLoginDTO } from './dto/userLogin.dto';
+import { LoginService } from './login.service';
 
 @Controller('login')
 export class LoginController {
-    constructor( ){}
+    constructor( 
+        private readonly loginService: LoginService
+     ){}
 
-    @Post('login')
-    async loginUser(@Body() param:userDTO){
-        return '';
+    @Post('userlogin')
+    async loginUser(@Body() param:userLoginDTO){
+        return await this.loginService.login(param);
     }
 }

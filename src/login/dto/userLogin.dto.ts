@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsString, Max, Min } from "class-validator";
 
-export class userDTO{
+export class userLoginDTO{
 
     @IsNotEmpty()
     @Min(11)

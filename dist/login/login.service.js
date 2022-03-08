@@ -8,9 +8,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -23,13 +20,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LoginService = void 0;
 const common_1 = require("@nestjs/common");
-const typeorm_1 = require("@nestjs/typeorm");
-const typeorm_2 = require("typeorm");
 const user_service_1 = require("../user/user.service");
 const user_entity_1 = require("../user/entity/user.entity");
 let LoginService = class LoginService {
-    constructor(userRepo, usuarioService) {
-        this.userRepo = userRepo;
+    constructor(usuarioService) {
         this.usuarioService = usuarioService;
     }
     login(param) {
@@ -42,6 +36,9 @@ let LoginService = class LoginService {
                         return "Usuário Logado";
                     }
                 }
+                else {
+                    return "Cpf ou senha incorretos";
+                }
             }
             catch (error) {
                 return 'Erro';
@@ -51,9 +48,7 @@ let LoginService = class LoginService {
 };
 LoginService = __decorate([
     (0, common_1.Injectable)(),
-    __param(0, (0, typeorm_1.InjectRepository)(user_entity_1.User)),
-    __metadata("design:paramtypes", [typeorm_2.Repository,
-        user_service_1.UserService])
+    __metadata("design:paramtypes", [user_service_1.UserService])
 ], LoginService);
 exports.LoginService = LoginService;
 //# sourceMappingURL=login.service.js.map

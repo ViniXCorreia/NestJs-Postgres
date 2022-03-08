@@ -5,7 +5,7 @@
    "username": "postgres",
    "password": "123456",
    "database": "studyViniDb",
-   "synchronize": true,
+   "synchronize": false,
    "logging": false,
    "entities": [
       "./dist/**/entity/*.entity.{js,ts}"

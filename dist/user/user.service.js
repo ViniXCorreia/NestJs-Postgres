@@ -37,13 +37,35 @@ let UserService = class UserService {
                 if (user instanceof user_entity_1.User) {
                     return user;
                 }
+            }
+            catch (error) {
+                return error;
+            }
+        });
+    }
+    findById(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const user = this.userRepo.findOneOrFail({ where: { id: id } });
+                if (user instanceof user_entity_1.User) {
+                    return user;
+                }
                 throw new common_1.NotFoundException();
             }
             catch (error) {
                 if (error instanceof common_1.NotFoundException) {
-                    return "Usuário Não encontrado";
+                    return "Usuário não encotrado";
                 }
-                return common_1.NotFoundException;
+            }
+        });
+    }
+    findAll() {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                return yield this.userRepo.find();
+            }
+            catch (error) {
+                return "Erro ao procurar os usuários";
             }
         });
     }
@@ -78,6 +100,48 @@ let UserService = class UserService {
                     return "Usuário não Encontrado";
                 }
                 return common_1.NotFoundException;
+            }
+        });
+    }
+    createUser(param) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const result = yield this.findByCpf(param.cpf);
+                if (result instanceof user_entity_1.User) {
+                    return "Usuário já existe na base de dados";
+                }
+                else {
+                    return this.userRepo.save(param);
+                }
+            }
+            catch (error) {
+                throw error;
+            }
+        });
+    }
+    updateUser(param) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const result = yield this.findById(param.id);
+                if (result instanceof user_entity_1.User) {
+                    return this.userRepo.save(param);
+                }
+                else {
+                    return "Erro ao atualizar o usuário";
+                }
+            }
+            catch (error) {
+                return "Erro ao Conectar o banco de dados";
+            }
+        });
+    }
+    removeUser(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                return this.userRepo.delete(id);
+            }
+            catch (error) {
+                return "Erro ao deletar o usuário";
             }
         });
     }

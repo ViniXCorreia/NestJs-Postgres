@@ -1,9 +1,9 @@
-import { IsNotEmpty, isNotEmpty, IsNumber, IsString } from "class-validator";
+import { IsNotEmpty, isNotEmpty, IsNumber, IsString, Max, Min } from "class-validator";
 
 export class userDTO{
     @IsString()
     @IsNotEmpty()
-    firstname: string
+    firstName: string
     
     @IsString()
     @IsNotEmpty()
@@ -11,6 +11,8 @@ export class userDTO{
     
     @IsString()
     @IsNotEmpty()
+    @Max(11)
+    @Min(11)
     cpf: string
 
     @IsNumber()

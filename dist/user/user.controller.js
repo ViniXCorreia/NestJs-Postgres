@@ -23,30 +23,36 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserController = void 0;
 const common_1 = require("@nestjs/common");
-const userLogin_dto_1 = require("../login/dto/userLogin.dto");
+const userDto_1 = require("./dto/userDto");
+const user_entity_1 = require("./entity/user.entity");
 const user_service_1 = require("./user.service");
 let UserController = class UserController {
     constructor(userService) {
         this.userService = userService;
     }
-    createUser(params) {
+    createdUser(params) {
         return __awaiter(this, void 0, void 0, function* () {
-            return '';
+            return this.userService.createUser(params);
         });
     }
-    updateUser(id) {
+    updateUser(param) {
         return __awaiter(this, void 0, void 0, function* () {
-            return '';
+            return this.userService.updateUser(param);
         });
     }
     viewUser(cpf) {
         return __awaiter(this, void 0, void 0, function* () {
-            return '';
+            return this.userService.findByCpf(cpf);
         });
     }
-    delUser(cpf) {
+    getAll() {
         return __awaiter(this, void 0, void 0, function* () {
-            return '';
+            return this.userService.findAll();
+        });
+    }
+    delUser(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.userService.removeUser(id);
         });
     }
 };
@@ -54,28 +60,34 @@ __decorate([
     (0, common_1.Post)('create'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [userLogin_dto_1.userDTO]),
+    __metadata("design:paramtypes", [userDto_1.userDTO]),
     __metadata("design:returntype", Promise)
-], UserController.prototype, "createUser", null);
+], UserController.prototype, "createdUser", null);
 __decorate([
-    (0, common_1.Put)('update/:id'),
-    __param(0, (0, common_1.Param)('id')),
+    (0, common_1.Put)('update'),
+    __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number]),
+    __metadata("design:paramtypes", [user_entity_1.User]),
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "updateUser", null);
 __decorate([
-    (0, common_1.Get)('viewuser/:cpf'),
-    __param(0, (0, common_1.Param)('cpf')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number]),
-    __metadata("design:returntype", Promise)
-], UserController.prototype, "viewUser", null);
-__decorate([
-    (0, common_1.Delete)('deluser/:cpf'),
+    (0, common_1.Get)('getuser/:cpf'),
     __param(0, (0, common_1.Param)('cpf')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], UserController.prototype, "viewUser", null);
+__decorate([
+    (0, common_1.Get)('getallusers'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], UserController.prototype, "getAll", null);
+__decorate([
+    (0, common_1.Delete)('deluser'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "delUser", null);
 UserController = __decorate([

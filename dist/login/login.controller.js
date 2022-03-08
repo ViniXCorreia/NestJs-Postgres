@@ -24,24 +24,27 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.LoginController = void 0;
 const common_1 = require("@nestjs/common");
 const userLogin_dto_1 = require("./dto/userLogin.dto");
+const login_service_1 = require("./login.service");
 let LoginController = class LoginController {
-    constructor() { }
+    constructor(loginService) {
+        this.loginService = loginService;
+    }
     loginUser(param) {
         return __awaiter(this, void 0, void 0, function* () {
-            return '';
+            return yield this.loginService.login(param);
         });
     }
 };
 __decorate([
-    (0, common_1.Post)('login'),
+    (0, common_1.Post)('userlogin'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [userLogin_dto_1.userDTO]),
+    __metadata("design:paramtypes", [userLogin_dto_1.userLoginDTO]),
     __metadata("design:returntype", Promise)
 ], LoginController.prototype, "loginUser", null);
 LoginController = __decorate([
     (0, common_1.Controller)('login'),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [login_service_1.LoginService])
 ], LoginController);
 exports.LoginController = LoginController;
 //# sourceMappingURL=login.controller.js.map

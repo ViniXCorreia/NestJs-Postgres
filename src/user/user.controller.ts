@@ -1,5 +1,7 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
-import { userDTO } from '../login/dto/userLogin.dto';
+import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put } from '@nestjs/common';
+import { Code } from 'typeorm';
+import { userDTO } from './dto/userDto';
+import { User } from './entity/user.entity';
 import { UserService } from './user.service';
 
 
@@ -10,23 +12,28 @@ export class UserController {
     ){}
 
     @Post('create')
-    async createUser(@Body() params: userDTO, ){
-        return '';
+    async createdUser(@Body() params: userDTO){
+        return this.userService.createUser(params);
     }
 
-    @Put('update/:id')
-    async updateUser(@Param('id') id: number){
-        return '';
+    @Put('update')
+    async updateUser(@Body() param: User){
+        return this.userService.updateUser(param);
     }
 
-    @Get('viewuser/:cpf')
-    async viewUser(@Param('cpf') cpf: number){
-        return '';
+    @Get('getuser/:cpf')
+    async viewUser(@Param('cpf') cpf : string){
+        return this.userService.findByCpf(cpf);
     }
 
-    @Delete('deluser/:cpf')
-    async delUser(@Param('cpf') cpf: string){
-        return '';
+    @Get('getallusers')
+    async getAll(){
+        return this.userService.findAll();
+    }
+
+    @Delete('deluser')
+    async delUser(@Body() id: number){
+        return this.userService.removeUser(id);
     }
 
 }

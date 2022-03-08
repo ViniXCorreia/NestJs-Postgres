@@ -17,7 +17,7 @@ __decorate([
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
-], userDTO.prototype, "firstname", void 0);
+], userDTO.prototype, "firstName", void 0);
 __decorate([
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)(),
@@ -26,6 +26,8 @@ __decorate([
 __decorate([
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)(),
+    (0, class_validator_1.Max)(11),
+    (0, class_validator_1.Min)(11),
     __metadata("design:type", String)
 ], userDTO.prototype, "cpf", void 0);
 __decorate([
