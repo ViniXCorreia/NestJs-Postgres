@@ -16,7 +16,7 @@ export class ChamadoController {
     @Delete('deleteChamado/:id')
     async deleteChamado(@Param('id') id: number){
         return'';
-    }
+    }''
 
     @Put('updateChamado')
     async updateChamado(@Body() param: chamadoDTO){
