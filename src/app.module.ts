@@ -9,13 +9,22 @@ import { LoginController } from './login/login.controller';
 import { UserController } from './user/user.controller';
 import { ChamadoService } from './chamados/chamado.service';
 import { ChamadoController } from './chamados/chamado.controller';
+import { ProdutorRuralModule } from './modules/produtor-rural/produtor-rural.module';
 
 @Module({
-  imports: [LoginModule, 
-    ConfigModule.forRoot({isGlobal: true}),
+  imports: [
+    LoginModule,
+    ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot(),
-    UserModule],
-  controllers: [AppController, LoginController, UserController, ChamadoController],
+    UserModule,
+    ProdutorRuralModule,
+  ],
+  controllers: [
+    AppController,
+    LoginController,
+    UserController,
+    ChamadoController,
+  ],
   providers: [AppService, ChamadoService],
 })
 export class AppModule {}

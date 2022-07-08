@@ -16,16 +16,27 @@ const login_module_1 = require("./login/login.module");
 const user_module_1 = require("./user/user.module");
 const login_controller_1 = require("./login/login.controller");
 const user_controller_1 = require("./user/user.controller");
+const chamado_service_1 = require("./chamados/chamado.service");
+const chamado_controller_1 = require("./chamados/chamado.controller");
+const produtor_rural_module_1 = require("./modules/produtor-rural/produtor-rural.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [login_module_1.LoginModule,
+        imports: [
+            login_module_1.LoginModule,
             config_1.ConfigModule.forRoot({ isGlobal: true }),
             typeorm_1.TypeOrmModule.forRoot(),
-            user_module_1.UserModule],
-        controllers: [app_controller_1.AppController, login_controller_1.LoginController, user_controller_1.UserController],
-        providers: [app_service_1.AppService],
+            user_module_1.UserModule,
+            produtor_rural_module_1.ProdutorRuralModule,
+        ],
+        controllers: [
+            app_controller_1.AppController,
+            login_controller_1.LoginController,
+            user_controller_1.UserController,
+            chamado_controller_1.ChamadoController,
+        ],
+        providers: [app_service_1.AppService, chamado_service_1.ChamadoService],
     })
 ], AppModule);
 exports.AppModule = AppModule;

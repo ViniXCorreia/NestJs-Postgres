@@ -1,11 +1,12 @@
+require('dotenv').config({path: './.env'});
 {
    "type": "postgres",
    "host": "localhost",
    "port": 5432,
    "username": "postgres",
-   "password": "123456",
-   "database": "studyViniDb",
-   "synchronize": false,
+   "password": "postgres",
+   "database": "nttdatabase",
+   "synchronize": true,
    "logging": false,
    "entities": [
       "./dist/**/entity/*.entity.{js,ts}"
@@ -18,7 +19,7 @@
    ],
    "cli": {
       "entitiesDir": "src/**/entity",
-      "migrationsDir": "src/migration",
+      "migrationsDir": "src/_shared/migration",
       "subscribersDir": "src/subscriber"
    }
 }

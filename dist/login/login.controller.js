@@ -23,7 +23,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LoginController = void 0;
 const common_1 = require("@nestjs/common");
-const userLogin_dto_1 = require("./dto/userLogin.dto");
+const userLoginDTO_dto_1 = require("./dto/userLoginDTO.dto");
 const login_service_1 = require("./login.service");
 let LoginController = class LoginController {
     constructor(loginService) {
@@ -39,7 +39,7 @@ __decorate([
     (0, common_1.Post)('userlogin'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [userLogin_dto_1.userLoginDTO]),
+    __metadata("design:paramtypes", [userLoginDTO_dto_1.userLoginDTO]),
     __metadata("design:returntype", Promise)
 ], LoginController.prototype, "loginUser", null);
 LoginController = __decorate([

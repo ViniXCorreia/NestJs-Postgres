@@ -1,12 +1,13 @@
-export class ProdutorRural{
-    cpfCnpj: string;
-    nomeProdutor: string;
-    nomeFazenda: string;
-    cidade: string;
-    estado: string;
-    areaTotalFazenda: number;
-    areaVegetacaoFazenda: number;
-    areaAgricultavelFazenda: number;
-    culturasPlantadas: ;
-    
+import { Cultura } from './cultura.entity';
+
+export class ProdutorRural {
+  cpfCnpj: string;
+  nomeProdutor: string;
+  nomeFazenda: string;
+  cidade: string;
+  estado: string;
+  areaTotalFazenda: number;
+  areaVegetacaoFazenda: number;
+  areaAgricultavelFazenda: number;
+  culturasPlantadas: Cultura[];
 }
