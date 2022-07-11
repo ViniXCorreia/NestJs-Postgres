@@ -3,28 +3,18 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { LoginModule } from './login/login.module';
 import { UserModule } from './user/user.module';
-import { LoginController } from './login/login.controller';
 import { UserController } from './user/user.controller';
-import { ChamadoService } from './chamados/chamado.service';
-import { ChamadoController } from './chamados/chamado.controller';
-import { ProdutorRuralModule } from './modules/produtor-rural/produtor-rural.module';
+import { producerRuralModule } from './modules/producer-rural/producer-rural.module';
 
 @Module({
   imports: [
-    LoginModule,
-    ConfigModule.forRoot({ isGlobal: true }),
+    ConfigModule.forRoot({ isGlobal: true, envFilePath: './.env' }),
     TypeOrmModule.forRoot(),
     UserModule,
-    ProdutorRuralModule,
+    producerRuralModule,
   ],
-  controllers: [
-    AppController,
-    LoginController,
-    UserController,
-    ChamadoController,
-  ],
-  providers: [AppService, ChamadoService],
+  controllers: [AppController, UserController],
+  providers: [AppService],
 })
 export class AppModule {}
