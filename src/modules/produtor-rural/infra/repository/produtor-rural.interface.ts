@@ -13,7 +13,7 @@ export interface IRuralProducerRepoService {
   findById(id: number): Promise<RuralProducer>;
   findTotalAreaOfAllFarms(): Promise<number>;
   findAllByFederalState(federalState: string): Promise<RuralProducer[]>;
-  findAllByCrop(crop: string): Promise<Crop[]>;
+  findAllByCrop(crop: string): Promise<RuralProducer[]>;
   findAllByGroundUsage(): Promise<RuralProducer[]>;
   updateRuralProducer(
     updateRuralProducerDTO: UpdateRuralProducerlDto,

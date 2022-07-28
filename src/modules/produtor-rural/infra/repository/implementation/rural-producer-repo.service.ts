@@ -5,7 +5,9 @@ import { Crop } from '../../../entity/crop.entity';
 import { RuralProducer } from '../../../entity/rural-producer.entity';
 import { CreateRuralProducerDto } from '../../dto/create-rural-producer.dto';
 import { UpdateRuralProducerlDto } from '../../dto/update-rural-producer.dto';
+import { CropEntity } from '../../entities/crop.entity';
 import { RuralProducerEntity } from '../../entities/produtor-rural.entity';
+import { cropFactory } from '../../factory/crop.factory';
 import { ruralProducerFactory } from '../../factory/rural-producer.factory';
 
 import { IRuralProducerRepoService } from '../produtor-rural.interface';
@@ -15,6 +17,7 @@ export class RuralProducerRepoService implements IRuralProducerRepoService {
   constructor(
     @InjectRepository(RuralProducerEntity)
     private ruralProducerRepository: Repository<RuralProducerEntity>,
+    private cropRepository: Repository<CropEntity>
   ) {}
   async createRuralProducer(
     createRuralProducerDTO: CreateRuralProducerDto,
@@ -36,15 +39,28 @@ export class RuralProducerRepoService implements IRuralProducerRepoService {
   }
 
   findTotalAreaOfAllFarms(): Promise<number> {
-    throw new Error('Method not implemented.');
+    let totalAreaOfFarms = this.ruralProducerRepository
+      .createQueryBuilder('farm')
+      .select('SUM(farm.totalArea', 'sum')
+      .getRawOne();
+
+    return totalAreaOfFarms;
   }
 
-  findAllByFederalState(federalState: string): Promise<RuralProducer[]> {
-    throw new Error('Method not implemented.');
+  async findAllByFederalState(federalState: string): Promise<RuralProducer[]> {
+    let allFarms = await this.ruralProducerRepository.find({
+      where: { federalState: federalState },
+    });
+
+    return allFarms.map((farm) => ruralProducerFactory(farm));
   }
 
-  findAllByCrop(crop: string): Promise<Crop[]> {
-    throw new Error('Method not implemented.');
+  async findAllByCrop(crop: string): Promise<RuralProducer[]> {
+    let allByCrop = await this.ruralProducerRepository.find({
+      where: { cropsPlanted: crop },
+    });
+
+    return allByCrop.map((crop) => ruralProducerFactory(crop));
   }
 
   findAllByGroundUsage(): Promise<RuralProducer[]> {
